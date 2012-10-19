@@ -1,8 +1,7 @@
-import sys
-
 try:
     import redis
 except:
+    import sys
     print "Redis-py is not installed."
     sys.exit(1)
 
