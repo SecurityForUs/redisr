@@ -62,7 +62,7 @@ class Redisr(object):
     @rcheck
     def read(self, name):
         return self.load(name)
-r = Redisr()
+
 """
 Usage:
 
