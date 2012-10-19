@@ -22,10 +22,15 @@ class Redisr(object):
     Initializes Redisr() helper class by establishing a connection to redis.
     """
     def __init__(self, host="localhost", port=6379):
+        self.r = redis.StrictRedis(host=host,port=port,db=0)
+        
+        """
+        If the connection wasn't made, ping() will raise this exception:
+        
+        redis.exceptions.ConnectionError: Error 111 connecting <host>:<port>. Connection refused.
+        """
         try:
-            import time
-            self.r = redis.StrictRedis(host=host,port=port,db=0)
-            self.r.set('system_startup', time.time())
+            self.r.ping()
         except:
             self.r = None
     
@@ -57,7 +62,7 @@ class Redisr(object):
     @rcheck
     def read(self, name):
         return self.load(name)
-
+r = Redisr()
 """
 Usage:
 
