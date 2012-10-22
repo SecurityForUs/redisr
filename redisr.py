@@ -62,7 +62,11 @@ class Redisr(object):
     @rcheck
     def read(self, name):
         return self.load(name)
-
+    
+    @rcheck
+    def __getitem__(self, index):
+        return self.load(index)
+    
 """
 Usage:
 
